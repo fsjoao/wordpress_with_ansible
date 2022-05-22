@@ -1,0 +1,8 @@
+[wordpress]
+IPRIGHTHERE ansible_user=vagrant ansible_ssh_private_key_file="rightherethepath"
+
+
+
+#ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key before
+#ansible-playbook provisioning.yml -i hosts after
+
