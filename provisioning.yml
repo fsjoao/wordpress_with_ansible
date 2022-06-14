@@ -17,6 +17,11 @@
         - python-mysqldb
         - php5-mysql
 
-
+      - name: 'Cria banco MySQLdb'
+        mysql_db: 
+          name: wordpress_db
+          login_user: root
+          state: present
 
 #ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
+#ansible-playbook -i hosts provisioning.yml
