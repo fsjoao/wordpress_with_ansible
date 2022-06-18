@@ -1,5 +1,12 @@
 ---
 - hosts: all
+  handlers:
+    - name: restart apache
+      service:
+        name: apache2
+        state: restarted
+        become: yes
+
   tasks;
     - name: "Install OS dependences."
       apt:
@@ -49,7 +56,7 @@
           remote_src: yes
         become: yes
 
-      - name: 'Configura o wp-config w/ db entries'
+      - name: 'Configura o wp-config com as entradas do DB'
         replace:
           path: 'C:/Users/user1/Documents/wordpress/wp-config.php'
           regexp: "{{ item.regex }}"
@@ -59,6 +66,14 @@
           - { regex: 'username_here', value: 'wordpress_user'}
           - { regex: 'password_here', value: '321654'}
         become: yes                      
+
+        - name: 'Configura Apache para Wordpress'
+          copy:
+            src: 'files/000-default.conf'
+            dest: '/apache2/sites-available/000-default.conf'
+          become: yes
+          notify:
+            - restart apache
 
 #ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
 #ansible-playbook -i hosts provisioning.yml
