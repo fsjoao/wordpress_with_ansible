@@ -23,5 +23,16 @@
           login_user: root
           state: present
 
+
+      - name: 'Cria o usuário do MySQL'
+        mysql_user:
+          login_user: root 
+          name: wordpress_user1
+          password: 321654
+          priv: 'wordpress_db.*:ALL'
+          state: present
+
+          
 #ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
 #ansible-playbook -i hosts provisioning.yml
+#vagrant ssh
