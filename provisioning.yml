@@ -32,7 +32,21 @@
           priv: 'wordpress_db.*:ALL'
           state: present
 
-          
+      - name: 'Baixa o arquivo de instalação via URL do Wordpress'
+        get_url:
+          url: 'https://wordpress.org/latest.tar.gz'
+          dest: 'C:\Users\user1\Downloads'
+
+
+      - name: 'Descompacta o wordpress'
+        unarchive:
+          src: 'C:\Users\user1\Downloads'
+          dest: 'C:\Users\user1\Documents'
+          remote_src: yes
+        become: yes
+
+
+
 #ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
 #ansible-playbook -i hosts provisioning.yml
 #vagrant ssh
