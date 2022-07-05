@@ -2,6 +2,6 @@
 wp_username: wordpress_user
 wp_db_name: wordpress_db
 wp_user_password: 321654
-wp_installation_dir: '/var/www/wordpress'
+wp_installation_dir: 'C:/Users/user1/Documents/wordpress/wp-config.php'
 wp_host_ip: '172.17.177.40'
 wp_db_ip: '/172.17.177.42'
