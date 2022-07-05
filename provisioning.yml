@@ -72,13 +72,14 @@
           - { regex: 'localhost', value: '{{wp_db_ip }}'}
         become: yes                      
 
-        - name: 'Configura Apache para Wordpress'
-          copy:
-            src: 'files/000-default.conf'
+        - name: 'Configura Apache para servir Wordpress'
+          template:
+            src: 'templates/000-default.conf.j2'
             dest: '/apache2/sites-available/000-default.conf'
           become: yes
           notify:
             - restart apache
+            
 
 #ansible-playbook provisioning.yml -u vagrant -i hosts --private-key .vagrant/machines/wordpress/virtualbox/private_key
 #ansible-playbook -i hosts provisioning.yml
